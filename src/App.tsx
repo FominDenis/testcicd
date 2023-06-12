@@ -20,7 +20,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <Button color='blue' onClick={() => console.log('button click')}>My Button</Button>
-      <Tooltip content="Hello, world!">
+      <Tooltip content="Hello, world!" id='tooltip'>
         <button>Hover over me</button>
       </Tooltip>
       <div className="card">
