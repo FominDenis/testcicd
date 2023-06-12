@@ -11,7 +11,7 @@ jobs:
       - name: install modules
         run: yarn install
       - name: Install Playwright Browsers
-        run: npx playwright install
+        run: npx playwright install chromium
       - name: build project
         run: yarn build
       - name: tests project

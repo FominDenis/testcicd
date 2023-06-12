@@ -3,7 +3,7 @@ import styles from './Tooltip.module.scss';
 interface Props {
     children: React.ReactElement<any>;
     content: string;
-    id: string;
+    id?: string;
 }
 
 
