@@ -1,0 +1,33 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn install
+      - name: Build and test
+        run: |
+          yarn dev
+          yarn test-ct
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to production
+        uses: easingthemes/ssh-deploy@v2.1.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          server: your-server.com
+          username: your-username
+          remote_dir: /var/www/your-project
+          local_dir: ./dist
