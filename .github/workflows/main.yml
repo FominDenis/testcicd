@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo -e "main! - ${{github.event.workflow_run.conclusion}}"
+          echo -e "eeee! - ${{github.event.workflow_run.conclusion}}"
