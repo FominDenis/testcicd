@@ -3,14 +3,14 @@ name: Main
 on:
   workflow_run:
     workflows:
-      - Test
+      - GitHub Actions Demo
     types:
       - completed
 
 jobs:
   test-job:
-    name: Test Step
+    name: Main Step
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo -e "main!"
+          echo -e "eeee! - ${{github.event.workflow_run.conclusion}}"
