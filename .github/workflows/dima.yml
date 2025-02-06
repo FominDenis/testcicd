@@ -1,0 +1,16 @@
+name: Main
+
+on:
+  workflow_run:
+    workflows:
+      - GitHub Actions Demo
+    types:
+      - completed
+
+jobs:
+  test-job:
+    name: Main Step
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo -e "dima! - ${{github.event.workflow_run.conclusion}}"
