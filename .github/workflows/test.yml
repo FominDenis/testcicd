@@ -1,0 +1,13 @@
+name: Test
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  test-job:
+    name: Test Step
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo -e "test!"
