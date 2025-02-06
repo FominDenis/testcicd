@@ -1,4 +1,4 @@
-name: Main
+name: Dima
 
 on:
   workflow_run:
