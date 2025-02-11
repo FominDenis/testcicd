@@ -2,7 +2,7 @@ name: By time
 
 on:
   schedule:
-    - cron: '30 6-12 * * 0-4'
+    - cron: '34 6,7,8,9,10,11,12 * * 0-4'
 
 jobs:
   test-job:
