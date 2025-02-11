@@ -1,8 +1,8 @@
-name: Test
+name: By time
 
 on:
   schedule:
-    - cron: '27 6-12 * * 0-4'
+    - cron: '30 6-12 * * 0-4'
 
 jobs:
   test-job:
