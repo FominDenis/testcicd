@@ -2,12 +2,11 @@ name: By time
 
 on:
   schedule:
-    - cron: '34 6,7,8,9,10,11,12 * * 0-4'
+    - cron: '40 6,7,8,9,10,11,12 * * 0-4'
 
 jobs:
   test-job:
     name: Test Step
-    if: ${{ github.event.pull_request.user.login == 'FominDenis' }}
     runs-on: ubuntu-latest
     steps:
       - run: |
