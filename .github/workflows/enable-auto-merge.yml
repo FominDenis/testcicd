@@ -1,0 +1,25 @@
+name: Enable Auto-Merge for PR
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  enable-auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Enable auto-merge for PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO=${{ github.repository }}
+          
+          curl -X PATCH \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d '{"auto_merge": false}' \
+          "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER"
