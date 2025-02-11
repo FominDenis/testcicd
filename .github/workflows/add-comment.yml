@@ -1,0 +1,27 @@
+name: Add comment to successful Dependabot PRs
+
+on:
+  workflow_run:
+    workflows:
+      - GitHub Actions Demo
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: echo "Building the project..."
+
+      - name: Add comment to pull request
+        if: success() && github.event_name == 'push'
+        uses: peter-evans/comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Сборка прошла успешно! Спасибо за ваш вклад.
