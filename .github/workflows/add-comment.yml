@@ -1,21 +1,13 @@
-name: Comment on Pull Request
+name: Check Time
 
-on: [pull_request]
+on:
+  workflow_dispatch:  # Позволяет запускать воркфлоу вручную
 
 jobs:
-  comment:
+  display_time:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Add comment to pull request
+      - name: Check current time
         run: |
-          COMMENT="Спасибо за ваш pull request! Мы рассмотрим его в ближайшее время."
-          PR_NUMBER=${{ github.event.pull_request.number }}
-          REPO=${{ github.repository }}
-          TOKEN=${{ secrets.GITHUB_TOKEN }}
-
-          curl -X POST \
-            -H "Authorization: token $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/$REPO/issues/$PR_NUMBER/comments \
-            -d "{\"body\": \"$COMMENT\"}"
+          echo "Текущее время: $(date +%u) - $(date +%H)"
